@@ -1,0 +1,21 @@
+= Stellarisの建造物の並び順の修正用ツール
+:author: ERRORJP
+:toc: left
+:toc-title: 目次
+:sectnums:
+
+== これはなに？
+自作のStellaris Mod「【簡易版】Auto Sort Buildings」用のツールです。
+
+== 使い方
+=== 前準備
+. Python3をインストールする +
+  3.4以降必須です。
+
+. settings.pyを編集する +
+  Stellarisのインストールフォルダがデフォルトと異なる場合は``BUILDINGS_BASE_DIR``のパスを書き換えてください。
+
+=== ツールの実行方法
+. ``sort_buildings.bat``をダブルクリックする +
+  outputフォルダ以下にファイルが出力されていたら成功です。 +
+  建造物の各定義の末尾に``position_priority = xxx``が出力されたファイルができあがるはずです。

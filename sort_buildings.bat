@@ -1,0 +1,1 @@
+python -B sort_buildings.py
