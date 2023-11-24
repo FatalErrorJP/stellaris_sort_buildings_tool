@@ -47,12 +47,8 @@ def convert_buildings(input_file, wf, index):
 				wf.writelines(line)
 				continue
 
-			# 内部パラメータの行から抜ける時に、特定のパラメータの有無を確認し
-			# 条件に一致すれば「position_priority = 数値」を追加で付与する
+			# 内部パラメータの行から抜ける時の条件
 			if re.fullmatch(settings.BUILDINGS_END_PATTARN, line):
-				if not exist_position_param:
-					position = str(index * 100 + number)
-					wf.writelines(settings.ADD_PARAM.format(position=position.strip()))
 				wf.writelines(line)
 
 				# 変数は初期化しておく
@@ -61,9 +57,18 @@ def convert_buildings(input_file, wf, index):
 				number += 1
 				continue
 
-			# 内部パラメータの行に入ったら、特定のパラメータがあるかどうかを調査する
-			if re.fullmatch(settings.BUILDINGS_POSITION_PATTARN, line):
+			# 内部パラメータの項目で内容をチェックする
+			if re.fullmatch(settings.BUILDINGS_POSITION_PATTARN2, line):
+				continue
+			elif re.fullmatch(settings.BUILDINGS_POSITION_PATTARN, line):
 				exist_position_param = True
+			elif re.fullmatch(settings.BUILDINGS_CATEGORY_PATTARN, line):
+				# categoryの手前でpositionを定義する
+				if not exist_position_param:
+					position = str(index * 100 + number)
+					wf.writelines(settings.ADD_PARAM.format(position=position.strip()))
+					exist_position_param = True
+
 			wf.writelines(line)
 
 

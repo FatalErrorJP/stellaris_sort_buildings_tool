@@ -14,6 +14,8 @@ OUTPUT_DIR = '.\output'
 BUILDINGS_START_PATTARN = r'^[a-zA-Z0-9]+.*{.*\n'
 BUILDINGS_END_PATTARN = r'^}\n'
 BUILDINGS_POSITION_PATTARN = r'^.*position_priority.*\n'
+BUILDINGS_POSITION_PATTARN2 = r'^.*position_priority[ ]*=[ ]*100.*\n'
+BUILDINGS_CATEGORY_PATTARN = r'^.*category.*\n'
 
 ###############################################################################
 # 出力文字列
